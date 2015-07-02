@@ -1,0 +1,50 @@
+/*! https://mths.be/stripvariationselectors v0.1.0 by @mathias */
+;(function(root) {
+
+	// Detect free variables `exports`
+	var freeExports = typeof exports == 'object' && exports;
+
+	// Detect free variable `module`
+	var freeModule = typeof module == 'object' && module &&
+		module.exports == freeExports && module;
+
+	// Detect free variable `global`, from Node.js or Browserified code,
+	// and use it as `root`
+	var freeGlobal = typeof global == 'object' && global;
+	if (freeGlobal.global === freeGlobal || freeGlobal.window === freeGlobal) {
+		root = freeGlobal;
+	}
+
+	/*--------------------------------------------------------------------------*/
+
+	var regex = /([\u180B-\u180D\uFE00-\uFE0F]|\uDB40[\uDD00-\uDDEF])/g;
+
+	var stripVariationSelectors = function(string) {
+		return string.replace(regex, '');
+	};
+
+	stripVariationSelectors.version = '0.1.0';
+
+	/*--------------------------------------------------------------------------*/
+
+	// Some AMD build optimizers, like r.js, check for specific condition patterns
+	// like the following:
+	if (
+		typeof define == 'function' &&
+		typeof define.amd == 'object' &&
+		define.amd
+	) {
+		define(function() {
+			return stripVariationSelectors;
+		});
+	}	else if (freeExports && !freeExports.nodeType) {
+		if (freeModule) { // in Node.js or RingoJS v0.8.0+
+			freeModule.exports = stripVariationSelectors;
+		} else { // in Narwhal or RingoJS v0.7.0-
+			freeExports.stripVariationSelectors = stripVariationSelectors;
+		}
+	} else { // in Rhino or a web browser
+		root.stripVariationSelectors = stripVariationSelectors;
+	}
+
+}(this));
