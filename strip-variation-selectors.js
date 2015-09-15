@@ -1,4 +1,4 @@
-/*! https://mths.be/stripvariationselectors v0.1.0 by @mathias */
+/*! https://mths.be/stripvariationselectors v1.0.0 by @mathias */
 ;(function(root) {
 
 	// Detect free variables `exports`
@@ -23,7 +23,7 @@
 		return string.replace(regex, '');
 	};
 
-	stripVariationSelectors.version = '0.1.0';
+	stripVariationSelectors.version = '1.0.0';
 
 	/*--------------------------------------------------------------------------*/
 
